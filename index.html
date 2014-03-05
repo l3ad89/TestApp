@@ -1,27 +1,39 @@
-<!DOCTYPE html>
 <html>
-<head>
- <title>Standard jQM Template</title>
- </head>
- <link rel="stylesheet" href="style.css">
- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
- <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
- <script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
-</head>
+  <head>
+    <title>navigator.connection.type Example</title>
 
-<body>
- <div data-role="page" id="home">
-		<div data-role="header">
-		<h1>Here is the index page.</h1>
-		</div>
-		
-		<div data-role="content" id="noteArea">
-		<p><center>Start Adding Your Notes In The Area Below</center></p>
-		<center><textarea id="txtArea" draggable="false">THis is a Test Text Area</textarea></center>
-		
-		</div>
-	</div>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
 
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
 
-</body>
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        checkConnection();
+    }
+
+        function checkConnection() {
+            var networkState = navigator.connection.type;
+
+            var states = {};
+            states[Connection.UNKNOWN]  = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI]     = 'WiFi connection';
+            states[Connection.CELL_2G]  = 'Cell 2G connection';
+            states[Connection.CELL_3G]  = 'Cell 3G connection';
+            states[Connection.CELL_4G]  = 'Cell 4G connection';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
+
+            alert('Connection type: ' + states[networkState]);
+        }
+
+    </script>
+  </head>
+  <body>
+    <p>A dialog box will report the network state.</p>
+  </body>
 </html>
