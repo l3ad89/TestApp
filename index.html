@@ -19,7 +19,14 @@
     function onDeviceReady() {
         startWatch();
         
-         var now                  = new Date().getTime(),
+     
+    }
+
+    // Start watching the compass
+    //
+    function startWatch() {
+
+    var now                  = new Date().getTime(),
     
 
 window.plugin.notification.local.add({
@@ -30,12 +37,6 @@ window.plugin.notification.local.add({
     
   
 });
-    }
-
-    // Start watching the compass
-    //
-    function startWatch() {
-
         // Update compass every 3 seconds
         var options = { frequency: 3000 };
 
