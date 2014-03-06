@@ -4,6 +4,7 @@
     <title>Compass Example</title>
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="local-notification.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     // The watch id references the current `watchHeading`
@@ -19,14 +20,14 @@
         startWatch();
         
          var now                  = new Date().getTime(),
-    _60_seconds_from_now = new Date(now + 60*1000);
+    
 
 window.plugin.notification.local.add({
     id:      2, // is converted to a string
     title:   'Reminder',
     message: 'Dont forget to buy some flowers.',
     repeat:  'weekly',
-    date:    _60_seconds_from_now
+    
   
 });
     }
