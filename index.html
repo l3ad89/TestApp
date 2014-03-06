@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Device Properties Example</title>
+    <title>Compass Example</title>
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
@@ -13,17 +13,25 @@
     // device APIs are available
     //
     function onDeviceReady() {
-        var element = document.getElementById('deviceProperties');
-        element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
-                            'Device Cordova: '  + device.cordova  + '<br />' +
-                            'Device Platform: ' + device.platform + '<br />' +
-                            'Device UUID: '     + device.uuid     + '<br />' +
-                            'Device Version: '  + device.version  + '<br />';
+        navigator.compass.getCurrentHeading(onSuccess, onError);
+    }
+
+    // onSuccess: Get the current heading
+    //
+    function onSuccess(heading) {
+        alert('Heading: ' + heading.magneticHeading);
+    }
+
+    // onError: Failed to get the heading
+    //
+    function onError(compassError) {
+        alert('Compass Error: ' + compassError.code);
     }
 
     </script>
   </head>
   <body>
-    <p id="deviceProperties">Loading device properties...</p>
+    <h1>Example</h1>
+    <p>getCurrentHeading</p>
   </body>
 </html>
